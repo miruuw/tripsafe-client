@@ -25,6 +25,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },  
+    "extra": {
+      "googleMapsApiKey": "AIzaSyBBqWFQo0UwlzdmNHXV9nunZS2W0Y3tC9Q"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ]
+
   }
 }

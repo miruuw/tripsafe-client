@@ -3,7 +3,7 @@ import { View, Text} from 'react-native'
 import {useFonts} from 'expo-font';
 import styles from './home.style'
 
-const Home = () => {
+const HomeSC = () => {
 
     const [fontsLoaded] = useFonts({
         DMBold: require("../../assets/fonts/DMSans-Bold.ttf"),
@@ -22,4 +22,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default HomeSC;

@@ -37,8 +37,9 @@ import telephone from '../assets/icon/telephone.png';
 import upload from '../assets/icon/upload.png';
 import user from '../assets/icon/user.png';
 import whatsapp from '../assets/icon/whatsapp.png';
+import currentmaps from '../assets/icon/currentmaps.png';
 
-export default {
+export {
     addPlus, 
     addList,
     addProduk,
@@ -77,5 +78,6 @@ export default {
     telephone,
     upload,
     user,
-    whatsapp
+    whatsapp,
+    currentmaps
 }

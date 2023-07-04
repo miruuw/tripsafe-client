@@ -1,9 +1,8 @@
 import { StyleSheet } from "react-native";
-import {COLOR, FONT} from "../../constant";
-
+import { greenPrimary} from '../../constant/color';
 const styles = StyleSheet.create({
     text1 : {
-        color: COLOR.greenPrimary,
+        color: greenPrimary,
     }
 })
 

@@ -2,12 +2,12 @@ import React from 'react'
 import { View, Text} from 'react-native'
 import styles from './keranjang.style'
 
-const Keranjang = () => {
+const KeranjangSC = () => {
   return (
     <View>
-        <Text style={styles.text1}>Ini Halaman Home</Text>
+        <Text style={styles.text1}>Ini Halaman Keranjang</Text>
     </View>
   )
 }
 
-export default Keranjang
+export default KeranjangSC;

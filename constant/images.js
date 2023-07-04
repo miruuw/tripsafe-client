@@ -4,7 +4,7 @@ import LogoApp from '../assets/image/LOGO.png';
 import Lokasi from '../assets/image/lokasi.png';
 import Produk from '../assets/image/produk.jpg';
 
-export default {
+export {
     BankMerchant,
     Profil,
     LogoApp,

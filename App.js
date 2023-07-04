@@ -1,7 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import {useFonts} from 'expo-font';
-import {Home} from './screen';
+import { NavigationContainer } from '@react-navigation/native';
+import SplashSC from './screen/splash/SplashSC';
+import HomeSC from './screen/home/HomeSC';
+import BottomTab from './navigation/BottomTab';
 
 export default function App() {
 
@@ -16,14 +19,9 @@ export default function App() {
   }
 
   return (
-    // <View style={styles.container}>
-    //   {/* <Text style={styles.text1}>Open up App.js to start working on your app!
-    //     ayok semangat SAID!!
-    //   </Text> */}
-    //   <Home/>
-    //   <StatusBar style="auto" />
-    // </View>
-    <Home/>
+    <>
+    <BottomTab/>
+     </>
   );
 }
 

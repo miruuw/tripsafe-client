@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
-import COLORS from "../../constant/theme";
+import { greenSecondary} from '../../constant/color';
 
 const styles = StyleSheet.create({
     text1 : {
-        color: COLORS.greenSecondary,
+        color: greenSecondary,
         fontFamily: 'DMBold'
     }
 })
