@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { greenPrimary} from '../../constant/color';
 
 const styles = StyleSheet.create({
     container: {
@@ -7,11 +6,11 @@ const styles = StyleSheet.create({
       },
       map: {
         width: '100%',
-        height: '100%',
+        height: '90%',
       },
       locationButton: {
         position: 'absolute',
-        bottom: 16,
+        bottom: 90,
         right: 16,
         backgroundColor: 'white',
         borderRadius: 24,

@@ -33,6 +33,7 @@ import scooter from '../assets/icon/scooter.png';
 import secret from '../assets/icon/secret.png';
 import spbu from '../assets/icon/spbu.png';
 import star from '../assets/icon/star.png';
+import share from '../assets/icon/share.png';
 import telephone from '../assets/icon/telephone.png';
 import upload from '../assets/icon/upload.png';
 import user from '../assets/icon/user.png';
@@ -75,9 +76,10 @@ export {
     secret,
     spbu,
     star,
+    share,
     telephone,
     upload,
     user,
     whatsapp,
-    currentmaps
+    currentmaps,
 }
