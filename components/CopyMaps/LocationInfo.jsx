@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, Image, Alert, Share, Clipboard } from 'react-native';
 import styles from './locationinfo.style';
 import { useFonts } from 'expo-font';
@@ -35,12 +35,15 @@ const LocationInfo = ({ latitude, longitude }) => {
 
   return (
     <View style={styles.container}>
+
       <View style={styles.detInfo}>
         <Text style={styles.locationText}>Titik Koordinat Lokasi Anda:</Text>
         <Text style={styles.txtKoor}>
           Latitude: {latitude}, Longitude: {longitude}
         </Text>
       </View>
+
+
       <View style={styles.iconContainer}>
         <TouchableOpacity style={styles.iconButton} onPress={handleCopyLocation}>
           <Image source={copy} style={styles.icon} />
@@ -49,6 +52,7 @@ const LocationInfo = ({ latitude, longitude }) => {
           <Image source={share} style={styles.icon} />
         </TouchableOpacity>
       </View>
+      
     </View>
   );
 };

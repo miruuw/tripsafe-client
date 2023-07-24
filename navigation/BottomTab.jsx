@@ -23,7 +23,7 @@ import {
 
 const Tab = createBottomTabNavigator();
 
-const BottomTab = () => {
+const BottomTab = ({ navigation }) => {
 
     const [fontsLoaded] = useFonts({
         DMBold: require("../assets/fonts/DMSans-Bold.ttf"),
@@ -36,7 +36,6 @@ const BottomTab = () => {
     }
 
     return (
-        <NavigationContainer>
             <Tab.Navigator
                 screenOptions={{
                     tabBarActiveTintColor: greenPrimary,
@@ -110,7 +109,6 @@ const BottomTab = () => {
                     }}
                 />
             </Tab.Navigator>
-        </NavigationContainer>
     );
 };
 

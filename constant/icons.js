@@ -1,4 +1,4 @@
-import addPlus from '../assets/icon/@add.png';
+import addPlus from '../assets/icon/ett.png';
 import addList from '../assets/icon/addlist.png';
 import addProduk from '../assets/icon/addProduk.png';
 import car from '../assets/icon/car.png';

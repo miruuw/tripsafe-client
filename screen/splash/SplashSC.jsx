@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { View, Image, Text } from 'react-native'
-import { Images } from '../../constant/images';
+import { View, Image, Text } from 'react-native';
 import styles from './splash.style';
+import {LogoApp} from '../../constant/images';
 
-const SplashSC = () => {
+const SplashSC = ({navigation}) => {
 
     useEffect(() => {
         setTimeout(() => {
@@ -14,7 +14,7 @@ const SplashSC = () => {
     return (
         <View>
             <View style={styles.flexRoot}>
-                {/* <Image source={Images.LogoApp} /> */}
+                <Image source={LogoApp} />
             </View>
             <View>
                 <Text style={styles.Text4}>Powered by Said Amirudin</Text>

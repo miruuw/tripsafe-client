@@ -75,9 +75,15 @@ const MapsSC = () => {
         )}
       </MapView>
       {errorMsg && <Text>{errorMsg}</Text>}
+
+      {/* -------------------------------- */}
+      
       <TouchableOpacity style={styles.locationButton} onPress={handleGetCurrentLocation}>
         <Image source={currentmaps} style={styles.locationButtonIcon} />
       </TouchableOpacity>
+
+      {/* ------------------------------- */}
+
       {location?.coords && (
         <LocationInfo
           latitude={location.coords.latitude}
