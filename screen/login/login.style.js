@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
     WrapperInput: {
         textAlign: 'center',
         alignSelf: 'center',
-        marginTop: 20,
-        marginBottom: 20,
+        marginTop: 10,
+        width: 370
     },
     viewButton: {
         width: 370,
@@ -129,7 +129,16 @@ const styles = StyleSheet.create({
         fontSize: 15, 
         fontFamily: 'DMBold',
         marginLeft: 10
-    }
+    },
+    errorText: {
+        color: 'red',
+        fontSize: 12,
+        textAlign: 'center',
+        marginTop: 10,
+        backgroundColor: 'yellow',
+        borderRadius: 5,
+        padding: 3
+      },
 
 })
 

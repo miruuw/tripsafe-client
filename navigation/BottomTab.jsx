@@ -1,7 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from "expo-font";
 import HomeScreen from '../screen/home/HomeSC';
 import CartScreen from '../screen/keranjang/KeranjangSC';

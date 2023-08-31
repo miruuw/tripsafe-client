@@ -1,16 +1,15 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 import SplashSC from '../screen/splash/SplashSC';
 import Login from '../screen/login/LoginSC'
 import Register from '../screen/register/RegisterSC'
 import BottomTab from './BottomTab';
+import { useLogin } from '../context/LoginProvider';
 
 const Stack = createStackNavigator();
 
-const RouteApp = () => {
+const StackNavigator = () => {
   return (
-    <NavigationContainer>
       <Stack.Navigator 
       screenOptions={{
         headerShown: false
@@ -22,10 +21,13 @@ const RouteApp = () => {
         name="Login" component={Login} />
         <Stack.Screen 
         name="Register" component={Register} />
-        <Stack.Screen  name="BottomTab" component={BottomTab} />
       </Stack.Navigator>
-    </NavigationContainer>
   )
+}
+
+const RouteApp = () => {
+  const { isLoggedIn } = useLogin()
+  return isLoggedIn ? <BottomTab/> : <StackNavigator/>
 }
 
 export default RouteApp;

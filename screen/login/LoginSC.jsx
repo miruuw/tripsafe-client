@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TextInput, TouchableOpacity, ActivityIndicator, ToastAndroid } from 'react-native';
+import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
-import axios from 'axios';
 import styles from './login.style';
 import { LogoApp } from '../../constant/images';
 import { addPlus, lock, google } from '../../constant/icons';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
+import client from '../../api/client';
+import { useLogin } from '../../context/LoginProvider';
+import { isValidEmail, isValidObjField, updateError } from '../../utils/method'
+import FormInput from '../../components/FormInput/FormInput';
+
 
 const LoginSC = ({ navigation }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const { setIsLoggedIn, setProfile } = useLogin();
+  const [userInfo, setUserInfo] = useState({
+    email: '',
+    password: ''
+  });
+  const [error, setError] = useState('');
+  const { email, password } = userInfo
 
   const [fontsLoaded] = useFonts({
     DMBold: require("../../assets/fonts/DMSans-Bold.ttf"),
@@ -22,39 +29,48 @@ const LoginSC = ({ navigation }) => {
     return null;
   }
 
-  const handleLogin = async () => {
-    try {
-      setIsLoading(true);
-      const response = await axios.post('http://localhost:8000/api/v1/users/login', {
-        email: email,
-        password: password
-      });
-      setIsLoading(false);
-  
-      if (response && response.data && response.data.token) {
-        const { token } = response.data;
-        // Simpan token ke AsyncStorage atau Redux untuk digunakan di seluruh aplikasi (opsional)
-        await AsyncStorage.setItem('userToken', token); // Simpan token ke AsyncStorage dengan key 'userToken'
-  
-        // Navigasi ke halaman yang sesuai setelah berhasil login
-        navigation.navigate('BottomTab');
-      } else {
-        showToast('Login gagal: Respon tidak valid');
+  const handleOnChangeText = (value, fieldName) => {
+    setUserInfo({ ...userInfo, [fieldName]: value });
+  };
+
+  const isValidForm = () => {
+    if (!isValidObjField(userInfo))
+      return updateError('semua form wajib diisi !', setError);
+
+    if (!isValidEmail(email)) return updateError('email anda salah!', setError);
+
+    if (!password.trim() || password.length < 8)
+      return updateError('password terlalu pendek!', setError);
+
+    return true;
+  };
+
+  const submitForm = async () => {
+    if (isValidForm()) {
+      try {
+        const res = await client.post('/sign-in', { ...userInfo });
+
+        console.log('Response from server:', res);
+
+        if (res.data.success) {
+          setUserInfo({ email: '', password: '' });
+          setProfile(res.data.user);
+          setIsLoggedIn(true);
+        } else {
+          setError(res.data.message);
+        }
+
+      } catch (error) {
+        console.log(error);
+        setError('Terjadi kesalahan');
       }
-    } catch (error) {
-      setIsLoading(false);
-      showToast('Login gagal: ' + error.message);
     }
   };
-  
 
-  const showToast = (message) => {
-    ToastAndroid.show(message, ToastAndroid.SHORT);
-  };
+
 
   return (
     <View>
-      {isLoading && <ActivityIndicator size="large" color="#0000ff" />}
       <View style={styles.WrapperJudul}>
         <Image source={LogoApp} style={styles.logo} />
       </View>
@@ -64,54 +80,39 @@ const LoginSC = ({ navigation }) => {
         <Text style={styles.TxtRegis2}>Masuk ke akun anda</Text>
       </View>
 
+
       <View style={styles.WrapperInput}>
-        <View style={styles.Flex}>
-          <View style={styles.FlexIcon}>
-            <Image source={addPlus} style={styles.icoAdd} />
-          </View>
+        <FormInput
+          value={email}
+          onChangeText={value => handleOnChangeText(value, 'email')}
+          label='Email'
+          placeholder='pengguna@email.com'
+          autoCapitalize='none'
+        />
 
-          <TextInput
-            style={styles.textInput}
-            label='Email'
-            placeholder='example@email.com'
-            autoCapitalize='none'
-            value={email}
-            onChangeText={setEmail}
-          />
-        </View>
-        <View style={styles.Flex}>
-          <View style={styles.FlexIcon}>
-            <Image source={lock} style={styles.icoLock} />
-          </View>
-          <TextInput
-            style={styles.textInput}
-            placeholder='********'
-            autoCapitalize='none'
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
-        </View>
-
-        <View style={styles.forgotPassword}>
-          <TouchableOpacity>
-            <Text style={styles.forgot}>Forgot your password?</Text>
-          </TouchableOpacity>
-        </View>
-
+        <FormInput
+          value={password}
+          onChangeText={value => handleOnChangeText(value, 'password')}
+          label='Password'
+          placeholder='********'
+          autoCapitalize='none'
+          secureTextEntry
+        />
       </View>
 
       <TouchableOpacity
-      style={styles.viewButton}
-      onPress={handleLogin}>
-          <Text style={styles.textLogin}>Masuk</Text>
+        style={styles.viewButton}
+        onPress={submitForm}
+      >
+        <Text style={styles.textLogin}>Masuk</Text>
       </TouchableOpacity>
 
+      {/* 
       <Text style={styles.TxtBtm}>Masuk Dengan</Text>
 
       <TouchableOpacity>
         <Image style={styles.google} source={google} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <View style={styles.clBlAkun}>
         <Text style={styles.txtBlakun}>Belum Memiliki Akun?</Text>
@@ -119,6 +120,13 @@ const LoginSC = ({ navigation }) => {
           <Text style={styles.txtDfCurrent}>Daftar Sekarang</Text>
         </TouchableOpacity>
       </View>
+
+      
+      {/* Tampilkan pesan kesalahan jika ada */}
+      {error ? (
+        <Text style={styles.errorText}>{error}</Text>
+      ) : null}
+
     </View>
   );
 };

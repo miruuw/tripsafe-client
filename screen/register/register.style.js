@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { greenPrimary} from '../../constant/color';
+import { black, greenPrimary, greenSecondary} from '../../constant/color';
 
 const styles = StyleSheet.create({
     Container: {
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         borderRightWidth: 0,
         borderTopLeftRadius: 10,
         borderBottomLeftRadius: 10,
-        borderColor: '#00AA13',
+        borderColor: greenPrimary,
         height: 60,
         paddingVertical: 5,
         flexDirection: 'row'
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     textInput: {
         width: 318,
         height: 60,
-        borderColor: '#00AA13',
+        borderColor: greenPrimary,
         alignSelf: 'center',
         marginVertical: 2.33,
         borderWidth: 1,
@@ -63,14 +63,14 @@ const styles = StyleSheet.create({
         marginVertical: 25
     },
     TxtRegis: {
-        fontWeight: 'bold',
+        fontFamily: 'DMBold',
         fontSize: 24,
-        color: '#00AA13',
+        color: greenPrimary,
     },
     TxtRegis2: {
-        fontWeight: 'bold',
+        fontFamily: 'DMMedium',
         fontSize: 16,
-        color: '#0FDC26'
+        color: greenSecondary
     },
     WrapperInput: {
         textAlign: 'center',
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         width: 370,
         height: 60,
         alignItems: 'center',
-        backgroundColor: '#00AA13',
+        backgroundColor: greenPrimary,
         justifyContent: 'center',
         alignSelf: 'center',
         borderRadius: 10,
@@ -90,13 +90,14 @@ const styles = StyleSheet.create({
     },
     textLogin: {
         color: 'white',
-        fontWeight: 'bold',
+        fontFamily: 'DMMedium',
         fontSize: 18
     },
     TxtBtm: {
         textAlign: 'center',
         marginTop: 20,
-        color: '#1E1E1E'
+        color: black,
+        fontFamily: 'DMRegular'
     },
     google: {
         width: 60,
