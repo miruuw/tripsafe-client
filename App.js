@@ -2,19 +2,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import LoginProvider from './context/LoginProvider';
 import RouteApp from './navigation/RouteApp';
 import BottomTab from './navigation/BottomTab';
+import UserProvider from './context/UserProvider';
 
 export default function App() {
 
   return (
     <LoginProvider>
-      <NavigationContainer>
-        <RouteApp/>
-      </NavigationContainer>
+      <UserProvider>
+        <NavigationContainer>
+          <RouteApp />
+        </NavigationContainer>
+      </UserProvider>
     </LoginProvider>
-//     <NavigationContainer>
-// <BottomTab/>
-//     </NavigationContainer>
-    
+
   )
 
 }

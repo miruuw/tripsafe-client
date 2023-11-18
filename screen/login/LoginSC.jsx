@@ -3,7 +3,6 @@ import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
 import styles from './login.style';
 import { LogoApp } from '../../constant/images';
-import { addPlus, lock, google } from '../../constant/icons';
 import client from '../../api/client';
 import { useLogin } from '../../context/LoginProvider';
 import { isValidEmail, isValidObjField, updateError } from '../../utils/method'
